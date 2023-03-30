@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import React, { useEffect } from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import tw from "tailwind-react-native-classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDestination, selectOrigin } from "../slices/NavSlice";
@@ -39,6 +39,8 @@ const Map = () => {
   }, [origin, destination, GOOGLE_MAPS_APIKEY]);
   return (
     <MapView
+      provider="google"
+      googleMapsApiKey={GOOGLE_MAPS_APIKEY}
       ref={mapRef}
       style={tw`flex-1`}
       mapType="mutedStandard"
