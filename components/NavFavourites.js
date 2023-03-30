@@ -9,7 +9,7 @@ import React from "react";
 import { Icon } from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 
-data = [
+const data = [
   {
     id: "123",
     icon: "home",

@@ -10,6 +10,7 @@ import NavFavourites from "../components/NavFavourites";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+  
   return (
     <SafeAreaView styles={tw`bg-white h-full`}>
       <View style={tw`p-5`}>
@@ -26,13 +27,18 @@ const HomeScreen = () => {
 
         <GooglePlacesAutocomplete
           placeholder="where from?"
+          listViewDisplayed={true}
+          listEmptyComponent={<div>Empty</div>}
           styles={{
             container: {
               flex: 0,
+              minHeight: 44,
+              zIndex:1
             },
             textInput: {
               fontSize: 18,
             },
+            listView: { color: "black", zIndex: 100000, minHeight: 400, position:"absolute", top:44},
           }}
           onPress={(data, details = null) => {
             dispatch(
@@ -50,6 +56,10 @@ const HomeScreen = () => {
           query={{ key: GOOGLE_MAPS_APIKEY, language: "en" }}
           nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
+          requestUrl={{
+            useOnPlatform: "web",
+            url: `https://cors-proxy.teamcode1011101.repl.co/?url=https://maps.googleapis.com/maps/api`,
+          }}
         />
 
         <NavOptions />
