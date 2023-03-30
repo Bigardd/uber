@@ -22,7 +22,6 @@ const Map = () => {
       edgePadding: { top: 50, bottom: 50, right: 50, left: 50 },
     });
 
-    
   }, [origin, destination]);
 
   useEffect(() => {
