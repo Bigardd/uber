@@ -21,9 +21,14 @@ concurrency:
   
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-22.04
     permissions:
       contents: write
+      id-token: write
+      pages: write
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
